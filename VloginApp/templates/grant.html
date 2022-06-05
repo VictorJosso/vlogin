@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+    <title>Vlogin - Authentification</title>
+
+    <meta name="description" content="Vlogin - Authentification">
+
+    <style>html {
+        visibility: hidden;
+        opacity: 0;
+    }</style>
+
+    <link rel="icon" type="image/png" href="">
+    <link rel="stylesheet" type="text/css" href="/static/css/normalize.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/grant.css">
+
+
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+
+    <script src="https://cdn.jsdelivr.net/npm/appwrite@8.0.1"></script>
+    <script src="/static/js/grant.js"></script>
+
+</head>
+
+<body>
+
+<div class="wrapper">
+
+    <div class="container">
+
+        <div class="content__card">
+
+            <div class="card__zone-1">
+                <img src="data:image/png;base64,{{ service_logo }}" alt="LOGO SERVICE">
+            </div>
+
+            <div>
+
+                <legend>
+                    {{ user_name }}, vous êtes sur le point d'accorder à {{ service_name }} l'accès à vos donées.
+                </legend>
+
+                <br>
+
+                <p>En acceptant, {{ service_name }} recevra les informations suivantes :</p>
+
+                <div class="card__zone-4" style="padding-top: 0px">
+                    <article class="leaderboard">
+                        <main class="leaderboard__profiles">
+                        {% for perm in permissions %}
+
+                            <article class="leaderboard__profile">
+                                <i class="{{ perm.icon }} leaderboard__picture"></i>
+                                <span class="leaderboard__name">{{ perm.nom }}</span>
+
+                            </article>
+                        {% endfor %}
+
+                        </main>
+                    </article>
+                </div>
+
+            </div>
+
+            <div class="card__zone-6">
+                <div class="card__zone-4" style="padding-top:0;">
+                    <button name="_eventId_proceed"
+                            onClick="refuse()">Je refuse
+                    </button>
+                </div>
+                <div class="card__zone-4" style="padding-top:0;">
+                    <button name="_eventId_proceed"
+                            onClick="accept()">J'accepte
+                    </button>
+                </div>
+
+            </div>
+
+
+            Vous serez redirigé vers {{ service_name }} {% if user_roles|length > 0 %} avec les roles {% for r in user_roles %}<code>{{ r }}</code> {% endfor %}{% endif %}
+
+
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
+

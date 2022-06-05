@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+    <title>Vlogin - Authentification</title>
+
+    <meta name="description" content="Vlogin - Authentification">
+
+    <style>html {
+        visibility: hidden;
+        opacity: 0;
+    }
+     code {
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border: 1px solid #BCBEC0;
+    padding: 2px;
+    font:12px Monaco,Consolas,"Andale  Mono","DejaVu Sans Mono",monospace
+}
+    </style>
+
+    <link rel="icon" type="image/png" href="">
+    <link rel="stylesheet" type="text/css" href="/static/css/normalize.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/appwrite@8.0.1"></script>
+
+
+</head>
+
+<body>
+
+<div class="wrapper">
+
+    <div class="container">
+
+        <div class="content__card">
+
+            <div class="card__zone-1">
+                <img src="data:image/png;base64,{{ service_logo }}" alt="LOGO SERVICE">
+            </div>
+
+            <div>
+
+                <legend>
+                    {{ user_name }}, vous n'avez pas la permission d'accéder à ce service. Si vous pensez que c'est une erreur, merci de contacter
+                    l'administrateur de {{ service_name }} pour obtenir l'accès.
+                </legend>
+
+                <br>
+
+                <p>Vos droits pour {{ service_name }} : {% if user_roles|length == 0 %}aucun{% else %}{% for r in user_roles %}<code>{{ r }}</code> {% endfor %}{% endif %}</p>
+
+                <div class="card__zone-4">
+                    <button name="_eventId_proceed"
+                            onClick="window.location.href='{{ url_retour }}'">Retour sur {{ service_name }}
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
+

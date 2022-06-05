@@ -1,0 +1,373 @@
+/*
+ * Prefixed by https://autoprefixer.github.io
+ * PostCSS: v7.0.29,
+ * Autoprefixer: v9.7.6
+ * Browsers: last 10 version
+ */
+
+/*
+ * ------
+ * Global
+ * ------
+ */
+
+html, body {
+    background-color: #fff;
+    color: #000;
+    font-family: 'Quicksand', sans-serif;
+
+    height: 100vh;
+    width: 100%;
+    margin:0;
+    padding:0;
+    line-height: 1.5em;
+
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+}
+
+a,
+a:link,
+a:visited {
+    color: #8A1538;
+    text-decoration: none;
+}
+
+a:focus,
+a:hover,
+a:active {
+    text-decoration: underline;
+    outline: none;
+}
+
+input {
+    border-style: solid;
+    border-color: #ccc;
+    border-radius: 5rem;
+    border-width: 1px;
+
+    margin-top: 5px;
+    padding: 5px 13px;
+    height: 20px;
+
+    -webkit-transition: border-color .2s;
+    -o-transition: border-color .2s;
+    transition: border-color .2s;
+}
+
+input:focus{
+    border-color: #8A1538;
+}
+
+input[type='checkbox'] {
+    position: absolute;
+
+    height: 18px;
+    width: 18px;
+
+    top: 0;
+    left: 0;
+
+    opacity: 0;
+}
+
+input[type='checkbox'] + label::before {
+    position: absolute;
+    content: "";
+
+    border: 1px solid #ccc;
+    border-radius: 3px;
+
+    height: 15px;
+    width: 15px;
+
+    top: 4px;
+    left: 0;
+}
+
+input[type='checkbox'] + label::after {
+    position: absolute;
+    content: "";
+
+    border: 2px solid #fff;
+    border-left: 0;
+    border-top: 0;
+
+    height: 9px;
+    width: 3px;
+
+    top: 6px;
+    left: 6px;
+
+    opacity: 0;
+
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+
+    -webkit-transition: opacity .2s;
+    -o-transition: opacity .2s;
+    transition: opacity .2s;
+}
+
+input[type='checkbox']:focus + label::before {
+    border: 1px solid #8A1538;
+
+    -webkit-transition: border-color .2s;
+    -o-transition: border-color .2s;
+    transition: border-color .2s;
+}
+
+input[type='checkbox']:checked + label::before {
+    background-color: #8A1538;
+
+    -webkit-transition: background-color .2s;
+    -o-transition: background-color .2s;
+    transition: background-color .2s;
+}
+
+input[type='checkbox']:checked + label::after {
+    opacity: 1;
+}
+
+button {
+    cursor: pointer;
+
+    padding: 5px 18px;
+    width: 100%;
+    min-height: 32px;
+    background-color: #8A1538;
+    color: #fff;
+
+    border-radius: 5rem;
+    border-width: 2px;
+    border-color: #8A1538;
+    border-style: solid;
+
+    -webkit-transition: background-color .2s, color .2s;
+    -o-transition: background-color .2s, color .2s;
+    transition: background-color .2s, color .2s;
+}
+
+button:hover,
+button:focus {
+    background-color: #fff;
+    color: #8A1538;
+}
+
+button:active {
+    background-color: #8A1538;
+    color: #fff;
+}
+
+input:focus,
+button:focus{
+    outline: none;
+}
+
+
+/*
+ * --------
+ * login.vm
+ * --------
+ */
+
+.wrapper {
+    height: 100%;
+
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+.container {
+    background-color: #eee;
+    font-size: 15px;
+    padding: 10px;
+
+    -webkit-box-flex: 1;
+    -ms-flex: 1 0 auto;
+
+    flex: 1 0 auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.content__card{
+    background-color: #fff;
+    padding: 60px;
+    width: 300px;
+
+    -webkit-box-shadow: 0 3px 20px -10px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+    box-shadow: 0 3px 20px -10px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+}
+
+.card__zone-1 {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+
+    padding-bottom: 30px;
+}
+
+.card__zone-1 img {
+    width: 200px;
+    height: 59px;
+    margin: auto 0;
+}
+
+.card__zone-2{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+
+    padding-bottom: 20px;
+}
+
+.card__zone-3{
+    position: relative;
+    margin: 10px;
+    padding-left: 30px;
+}
+
+.card__zone-4{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+
+    padding: 30px 0;
+}
+
+.card__zone-5{
+    text-align: center;
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+.card__zone-6{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+}
+
+
+/*
+ * ----------------------------------------
+ * Anciennes classes et/ou autres templates
+ * ----------------------------------------
+ */
+
+.form-error {
+    padding: 0;
+    color: #E21616;
+    margin-top: 0;
+}
+
+
+/*
+ * -------------
+ * Media queries
+ * -------------
+ */
+
+@media only screen and (max-width: 500px) {
+
+    .container{
+        padding: 0;
+
+        -webkit-box-align: inherit;
+        -ms-flex-align: inherit;
+        align-items: inherit;
+    }
+
+    .content__card{
+        padding: 30px;
+        padding-top: 50px;
+        width: 100%;
+    }
+
+}
+
+
+/* ------
+ * Autres
+ * ------
+ */
+
+.text--bold{
+    font-weight: 500;
+}
+
+.text--small{
+    font-size: 13px;
+}
+
+.text--centered{
+    text-align: center;
+}
+
+.text--danger{
+    color: #E21616;
+}
+
+.no-margin{
+    margin: 0;
+}
+
+.no-padding{
+    padding: 0;
+}
+
+html{
+    visibility: visible;
+    opacity: 1;
+
+    -webkit-transition: opacity .2s;
+    -o-transition: opacity .2s;
+    transition: opacity .2s;
+}
+

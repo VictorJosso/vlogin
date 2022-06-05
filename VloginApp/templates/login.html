@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+    <title>Vlogin - Authentification</title>
+
+    <meta name="description" content="Vlogin - Authentification">
+
+    <style>html {
+        visibility: hidden;
+        opacity: 0;
+    }</style>
+
+    <link rel="icon" type="image/png" href="">
+    <link rel="stylesheet" type="text/css" href="/static/css/normalize.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/appwrite@8.0.1"></script>
+    <script src="/static/js/login.js"></script>
+
+</head>
+
+<body>
+
+<div class="wrapper">
+
+    <div class="container">
+
+        <div class="content__card">
+
+            <div class="card__zone-1">
+                <img src="data:image/png;base64,{{ service_logo }}" alt="LOGO SERVICE">
+            </div>
+
+            <form action="javascript:login()">
+
+                <legend>
+                    Se connecter à {{ service_name }}
+                </legend>
+
+                <div class="card__zone-2">
+                    <label class="text--bold" for="username">Identifiant :</label>
+                    <input id="username" name="j_username" type="text"
+                           value="" autofocus>
+                </div>
+
+                <div class="card__zone-2">
+                    <label class="text--bold" for="password">Mot de passe :</label>
+                    <input id="password" name="j_password" type="password" value="">
+                </div>
+
+                <div class="card__zone-5">
+
+                </div>
+
+                <div class="card__zone-3">
+                    <input type="checkbox" name="donotcache" value="1" id="donotcache">
+                    <label class="text--small" for="donotcache">Ne pas enregistrer mon identifiant.</label>
+                </div>
+
+
+                <div class="card__zone-3">
+                    <input id="_shib_idp_revokeConsent" type="checkbox" name="_shib_idp_revokeConsent" value="true">
+                    <label class="text--small" for="_shib_idp_revokeConsent">Effacer les consentements accordés
+                        préalablement au service.</label>
+                </div>
+
+                <div class="card__zone-4">
+                    <button name="_eventId_proceed"
+                            onClick="login()">Se connecter
+                    </button>
+                </div>
+
+            </form>
+
+
+            {{ service_name }}
+
+            <div class="card__zone-6">
+
+                <a target="_blank" rel="noopener, noreferrer" class="text--small"
+                   href="https://activation.app.u-paris.fr/">Activation du compte</a>
+                <a target="_blank" rel="noopener, noreferrer" class="text--small"
+                   href="https://compte.app.u-paris.fr/midpoint/forgotpassword">Mot de passe oublié</a>
+                <a target="_blank" rel="noopener, noreferrer" class="text--small"
+                   href="https://u-paris.fr/activation-de-votre-compte-universite-de-paris/">Aide</a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
+
