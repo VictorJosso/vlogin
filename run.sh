@@ -2,8 +2,8 @@
 
 
 onINT() {
-echo "Killing command with PID $lydiaPID too"
-kill "helperPID"
+echo "Killing command with PID $helperPID too"
+kill "$helperPID"
 exit
 }
 

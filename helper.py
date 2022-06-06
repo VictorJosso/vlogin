@@ -46,6 +46,7 @@ class Cleaner(threading.Thread):
             if len(self.sessions) > 0:
                 current = self.sessions[0]
                 if datetime.datetime.now().timestamp() >= current.expiration:
+                    print("DELETE OF SESSION", current)
                     appwrite_users.delete_session(current.client_id, current.session_id)
                     self.sessions.pop(0)
                 else:
