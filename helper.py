@@ -58,12 +58,16 @@ class Cleaner(threading.Thread):
 def listen():
     cleaner = Cleaner()
     cleaner.run()
-    if os.path.exists("/tmp/vlogin.s"):
-        os.remove("/tmp/vlogin.s")
+    try:
+        os.unlink("/tmp/vlogin.s")
+    except OSError:
+        if os.path.exists("/tmp/vlogin.s"):
+            raise
 
     server = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
     server.bind("/tmp/vlogin.s")
     while True:
+        print("Listening for incoming connections")
         server.listen(1)
         conn, addr = server.accept()
         datagram = conn.recv(1024)
