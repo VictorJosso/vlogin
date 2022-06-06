@@ -1,4 +1,5 @@
 const appwrite = new Appwrite();
+let called = false;
 
 appwrite
     .setEndpoint('https://appwrite.josso.fr/v1')
@@ -9,6 +10,10 @@ appwrite
 
 
 function login() {
+    if (called) {
+        return
+    }
+    called = true;
     let messageDiv = document.getElementsByClassName("card__zone-5").item(0)
     let usernameField = document.getElementById("username")
     let passwordField = document.getElementById("password")

@@ -124,6 +124,7 @@ def validate_login():
     service = request.args.get("service", None)
     url = request.args.get("url", None)
     token = request.args.get("token", None)
+    session_id = request.args.get("session_id", None)
 
     print(service, url, token)
 
