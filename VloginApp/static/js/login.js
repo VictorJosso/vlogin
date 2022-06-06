@@ -21,7 +21,7 @@ function login() {
             let callbackURL = queryString.get("url")
             appwrite.account.createJWT().then(response2 => {
                 window.location.href = "/oauth/grant/?service=" + serviceID + "&url=" + callbackURL + "&token=" + response2.jwt
-            }, error => {messageDiv.innerHTML = "<section><p class=\"form-element form-error\">Une erreur est survenue</p></section>"})
+            }, error => {messageDiv.innerHTML = "<section><p class=\"form-element form-error\">Une erreur est survenue : "+ error.toString() +"</p></section>"})
         }, (error) => {
             console.log(error)
             messageDiv.innerHTML = "<section><p class=\"form-element form-error\">L'identifiant ou le mot de passe n'est pas reconnu.</p></section>"

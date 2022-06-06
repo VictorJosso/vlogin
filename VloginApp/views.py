@@ -3,7 +3,7 @@ import base64
 from flask import Flask, render_template, redirect, request, jsonify
 from werkzeug.middleware.proxy_fix import ProxyFix
 
-import os
+import os, sys
 import dotenv
 
 from .models import Permission
@@ -160,6 +160,7 @@ def validate_login():
             auth_doc = appwrite_database.create_document("authorizations", "unique()",
                                                          {"service_id": service, "auth_code": auth_code})
             user_doc = appwrite_database.list_documents("users", [Query.equal("user_id", [a["$id"]])])
+            print("AUTH DOC : ", auth_doc)
             print(user_doc)
             user_doc = user_doc["documents"][0]
             authorizations = user_doc["authorizations"]
@@ -167,7 +168,10 @@ def validate_login():
             appwrite_database.update_document("users", user_doc["$id"], {"authorizations": authorizations})
             return redirect(url + "?status=success&client_id=" + a["$id"] + "&code=" + auth_code)
         except Exception as e:
-            print(e)
+            exc_type, exc_obj, exc_tb = sys.exc_info()
+            fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
+            print(exc_type, fname, exc_tb.tb_lineno)
+
             return render_template("badurl.html")
     except:
         return render_template("badurl.html", h2message="Session expirée",
@@ -239,10 +243,10 @@ def authorize():
 
 
     except Exception as e:
-        print("ERROR")
-        print(e)
-        print(e.__context__)
-        print(e.__cause__)
+        exc_type, exc_obj, exc_tb = sys.exc_info()
+        fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
+        print(exc_type, fname, exc_tb.tb_lineno)
+
         return jsonify({"status": "refused"})
 
 
