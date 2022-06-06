@@ -5,6 +5,8 @@ from werkzeug.middleware.proxy_fix import ProxyFix
 
 import os, sys
 import dotenv
+import socket
+import json
 
 from .models import Permission
 from .utils import *
@@ -15,7 +17,6 @@ from appwrite.services.storage import Storage
 from appwrite.services.database import Database
 from appwrite.services.account import Account
 from appwrite.query import Query
-
 
 dotenv.load_dotenv()
 
@@ -259,6 +260,13 @@ def web_service():
     if hook_name == "SessionCreateHook":
         data = request.json
         print(data)
+        conn = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+        conn.connect("/tmp/vlogin.s")
+        conn.send(json.dumps({"event": "users.*.sessions.*.create",
+                              "session_id": data["$id"],
+                              "client_id": data["userId"],
+                              "expiration": data["expire"]}))
+        conn.close()
     else:
         return "Invalid request", 404
 
