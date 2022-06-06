@@ -57,7 +57,7 @@ class Cleaner(threading.Thread):
 
 def listen():
     cleaner = Cleaner()
-    cleaner.run()
+    cleaner.start()
     try:
         os.unlink("/tmp/vlogin.s")
     except OSError:
