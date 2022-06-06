@@ -251,6 +251,18 @@ def authorize():
         return jsonify({"status": "refused"})
 
 
+@app.route("/api/service/web/", methods=["POST"])
+def web_service():
+    hook_name = request.headers.get("X-Appwrite-Webhook-Name", None)
+    if hook_name is None:
+        return "Invalid request", 400
+    if hook_name == "SessionCreateHook":
+        data = request.json
+        print(data)
+    else:
+        return "Invalid request", 404
+
+
 @app.route("/badurl")
 def badurl():
     return render_template("badurl.html")

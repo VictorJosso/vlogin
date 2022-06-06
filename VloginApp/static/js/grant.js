@@ -19,5 +19,5 @@ function accept() {
     let service = queryString.get("service");
     appwrite.account.createJWT().then(response2 => {
         window.location.href = "/oauth/validate?service=" + service + "&url=" + url + "&token=" + response2["jwt"]
-    }, reason => {});
+    }, reason => {window.location.href = "/oauth/validate?service=" + service + "&url=" + url + "&token=null"});
 }
